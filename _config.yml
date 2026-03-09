@@ -7,6 +7,7 @@ description: "这里是BeiTaaaaaaa的个人GitHub网站"
 keyword: "BeiTaaaaaaa, 博客, 个人网站, 算法, C++, Python, Java, MySQL, 运维, 全栈, LeetCode"
 url: "https://BeiTaaaaaaa.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
+favicon: /img/my-own-images/site-logo.png
 
 # Publish posts or collection documents with a future date.
 future: true
