@@ -70,23 +70,23 @@ $\emptyset$不包含任何样本点，他也作为样本空间的子集，它在
 
 即A=B，则称事件A与事件B相等
 
-**A$\cup$B={x|x$\in$A 或 x$\in$B}**
+**A$\cup$B={x \| x$\in$A 或 x$\in$B}**
 
 称为事件A与事件B的和事件，当且仅当A，B中至少有一个发生时，事件A$\cup$B发生
 
-**A$\cap$B={x|x$\in$A 且 x$\in$B}**
+**A$\cap$B={x \| x$\in$A 且 x$\in$B}**
 
 称为事件A与事件B的积事件，当且仅当A，B同时发生的时候，事件A$\cap$B发生，A$\cap$B发生，A$\cap$B也记作AB
 
-**A-B={x|x$\in$A 且 x$\notin$B}**
+**A-B={x \| x$\in$A 且 x$\notin$B}**
 
 称为事件A与事件B的差事件，当且仅当A发生，B不发生时事件A-B发生
 
-**A$\cap$B=$\empty$**
+**A$\cap$B=$\emptyset$**
 
 称事件A与事件B是互不相容的，或互斥的，指的是事件A与事件B不能同时发生，基本事件是两两互不相容的
 
-**A$\cup$B=S且A$\cap$B=$\empty$**
+**A$\cup$B=S且A$\cap$B=$\emptyset$**
 
 称事件A与事件B互为逆事件，或对立事件，事件A，B中必有一个发生，且仅有一个发生，A的对立事件记作$\overline{A}$，
 
