@@ -3,24 +3,18 @@
 
 {% include head.html %}
 
-<!-- MathJax 稳定配置（支持 | 符号、空集等） -->
+<!-- MathJax 配置：国内 CDN + 自动回退 -->
 <script>
   MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$','$$'], ['\\[','\\]']],
-      // 按需加载扩展包（更可靠）
       packages: ['base', 'ams', 'mathtools', 'unicode'],
-      // 自定义宏，解决 | 和空集渲染问题
       macros: {
-        // 绝对值：|x| 的 LaTeX 形式，避免 Markdown 干扰
         abs: ['\\lvert #1 \\rvert', 1],
         norm: ['\\lVert #1 \\rVert', 1],
-        // 空集：提供两种形式
         emptyset: '\\varnothing',
-        // 微分符号 d 正体
         dd: ['\\mathrm{d}#1', 1],
-        // 常用集合
         R: '\\mathbb{R}',
         N: '\\mathbb{N}',
         Z: '\\mathbb{Z}',
@@ -33,20 +27,16 @@
       processHtmlClass: 'tex2jax_process'
     },
     loader: {
-      // 显式加载所需扩展（确保 mathtools 等可用）
       load: ['[tex]/mathtools', '[tex]/unicode']
     }
   };
 </script>
-<script 
-  type="text/javascript" 
-  id="MathJax-script" 
-  async 
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
 
-<!-- 备选 CDN（如果 jsDelivr 慢，可替换下面一行） -->
-<!-- <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script> -->
+<!-- 主 CDN（BootCDN，国内快） -->
+<script id="MathJax-script" async
+  src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"
+  onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';">
+</script>
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
