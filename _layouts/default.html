@@ -3,64 +3,38 @@
 
 {% include head.html %}
 
-<!-- MathJax 完整配置（匹配 Typora 渲染效果） -->
+<!-- MathJax 稳定配置（支持 | 符号、空集等） -->
 <script>
   MathJax = {
     tex: {
-      // 公式界定符（支持 Typora 常用格式）
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$','$$'], ['\\[','\\]']],
-      // 启用扩展包（与 Typora 保持一致）
-      packages: {
-        '[+]': [
-          'ams',           // AMS 数学符号
-          'amscd',         // 交换图
-          'boldsymbol',    // 粗体数学符号
-          'braket',        // 狄拉克符号 \bra, \ket
-          'cancel',        // 删除线 \cancel
-          'enclose',       // 包围符号 \enclose
-          'extpfeil',      // 扩展箭头
-          'mathtools',     // 高级数学工具（\coloneq 等）
-          'physics',       // 物理宏包（\div, \qty, \abs 等）
-          'textcomp',      // 文本符号
-          'unicode'        // Unicode 字符支持（空集等）
-        ]
-      },
-      // 物理包配置（允许重定义 \div 等命令）
-      physics: {
-        italicdiff: false,    // 微分符号用正体
-        arrowdel: false
-      },
-      // 宏定义（补充常用命令）
+      // 按需加载扩展包（更可靠）
+      packages: ['base', 'ams', 'mathtools', 'unicode'],
+      // 自定义宏，解决 | 和空集渲染问题
       macros: {
-        // 确保竖线相关命令可用
+        // 绝对值：|x| 的 LaTeX 形式，避免 Markdown 干扰
         abs: ['\\lvert #1 \\rvert', 1],
         norm: ['\\lVert #1 \\rVert', 1],
-        // 集合相关
-        set: ['\\{ #1 \\}', 1],
-        emptyset: '\\varnothing',     // 空集替代命令
-        // 微分符号
+        // 空集：提供两种形式
+        emptyset: '\\varnothing',
+        // 微分符号 d 正体
         dd: ['\\mathrm{d}#1', 1],
-        // 期望、概率
-        E: ['\\mathbb{E}'],
-        P: ['\\mathbb{P}']
+        // 常用集合
+        R: '\\mathbb{R}',
+        N: '\\mathbb{N}',
+        Z: '\\mathbb{Z}',
+        Q: '\\mathbb{Q}',
+        C: '\\mathbb{C}'
       }
     },
-    // 输出格式（使用 HTML+SVG 混合输出，兼容性最好）
     options: {
       ignoreHtmlClass: 'tex2jax_ignore',
       processHtmlClass: 'tex2jax_process'
     },
-    // 加载器配置（确保扩展正确加载）
     loader: {
-      load: ['[tex]/physics', '[tex]/mathtools', '[tex]/unicode']
-    },
-    // 启动配置
-    startup: {
-      typeset: false,
-      pageReady: () => {
-        return MathJax.startup.defaultPageReady();
-      }
+      // 显式加载所需扩展（确保 mathtools 等可用）
+      load: ['[tex]/mathtools', '[tex]/unicode']
     }
   };
 </script>
@@ -68,13 +42,11 @@
   type="text/javascript" 
   id="MathJax-script" 
   async 
-  src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js">
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
-<!-- 备选 CDN：如果 BootCDN 不可用，可换用以下任一地址 -->
-<!-- 
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
--->
+<!-- 备选 CDN（如果 jsDelivr 慢，可替换下面一行） -->
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script> -->
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
