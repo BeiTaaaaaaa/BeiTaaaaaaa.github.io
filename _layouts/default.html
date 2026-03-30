@@ -3,6 +3,22 @@
 
 {% include head.html %}
 
+<!-- MathJax 配置与加载 -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],   // 行内公式
+      displayMath: [['$$','$$'], ['\\[','\\]']]   // 块级公式
+    }
+  };
+</script>
+<script 
+  type="text/javascript" 
+  id="MathJax-script" 
+  async 
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
 
